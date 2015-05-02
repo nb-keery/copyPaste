@@ -2,7 +2,8 @@
 	<form method="POST" action="">
 		<label for="pseudo"><span>Pseudo</span><input type="text" name="pseudo" autofocus required placeholder="Pseudo"></label>
 		<label for="password"><span>Mot de passe</span><input type="password" name="password" required placeholder="Mot de passe"></label>
-		<input type="submit" name="connexion" value="Connexion" class="button">
+		<input type="hidden"  name="action" value="connexion">
+		<input type="submit" name="connexion"class="button">
 	</form>
 </div>
 
@@ -13,7 +14,7 @@
 
 <div id="formIns">
 	<h2>S'inscrire</h2>
-	<?php if ($message == 1) {
+	<?php if (isset($msg)) {
 		echo "<p class='invalide'>Le pseudo ou l'adresse email est déjà utilisé</p>";
 	} ?>
 	<form method="POST" action="">
@@ -22,6 +23,7 @@
 		<input type="password" name="password"  placeholder="Confirmation du mot de passe">
 		<input type="email" name="email" required placeholder="Adresse email">
 		<input type="email" name="email2"  placeholder="Confirmation de l'adresse email">
+		<input type="hidden" value="inscription" name="action">
 		<input type="submit" value="Inscription" name="submit" class="button">
 	</form>
 </div>

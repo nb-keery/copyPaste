@@ -1,5 +1,4 @@
-<script type="text/javascript">
-	$(document).ready(function(){
+$(document).ready(function(){
 
 
 		tinymce.init({
@@ -71,9 +70,9 @@
 					}
 				});
 			});
-			$("#formSupprimer > button:nth-child(3)").click(function(){
-				$("#formSupprimer").hide();
-			})
+		});
+		$(document).on("click", "#formSupprimer > button:nth-child(3)", function(){
+			$("#formSupprimer").hide();
 		});
 
 
@@ -137,4 +136,3 @@
 		});
 
 		}); 
-</script>

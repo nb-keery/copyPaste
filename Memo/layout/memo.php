@@ -6,6 +6,7 @@
 			</a>
 	</span>
 	<form method="POST" action="index.php?pg=login">
+		<input type="hidden" value="deconnexion" name="action">
 		<input type="submit" name="deco" value="Déconnexion" class="button">
 	</form>
 </div>
