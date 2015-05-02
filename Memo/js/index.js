@@ -1,64 +1,82 @@
 $(document).ready(function(){
 
-
-		tinymce.init({
-	    selector: ".wys",
-	    plugins: [
-	        "advlist autolink lists link image charmap print preview anchor textcolor",
-	        "searchreplace visualblocks code fullscreen",
-	        "insertdatetime media table contextmenu paste"
-	    ],
-	    menubar : false,
-	    toolbar: "bold | italic | bullist | alignleft aligncenter alignright | forecolor backcolor"
+	// wisiwig
+	tinymce.init({
+		selector: ".wys",
+		plugins: [
+		    "advlist autolink lists link image charmap print preview anchor textcolor",
+		    "searchreplace visualblocks code fullscreen",
+		    "insertdatetime media table contextmenu paste"
+		],
+		menubar : false,
+		toolbar: "bold | italic | bullist | alignleft aligncenter alignright | forecolor backcolor"
 	});
 
 
-		//Afficher la colorbox pour chaque code
-		$("#container > ul > li > span.gallery").click(function(){
-			var code = $(this).prev("textarea").val();
-			var titre = $(this).prevAll("span").children().text();
-			var info = $(this).next().text();
-			$(".gallery").colorbox({html:"<h2>"+ titre +"</h2><div id='principal'><textarea id='colorBTA1'>"+ info +"</textarea><textarea id='colorBTA2'>"+ code +"</textarea></div><button class='button' id='aide' title='Afficher ou cacher les informations'><i class='fa fa-info'></i></button><button class='button' title='Valider les modifications'><i class='fa fa-pencil-square-o'></i></button><button class='button' title='Supprimer ce code'><i class='fa fa-trash-o'></i></button>", width:" 80%", height: "85%", opacity : 0.9, close : '<i class="fa fa-times"></i>'}, function(){
-				$("#colorBTA1").hide();
-				$(document).on("click", "#aide",function(){
-
-					$("#colorBTA1").fadeIn("fast");
-					$("#colorBTA2").css({"width": "70%",
-										"display": "inline-block"});
-					$(document).on("click","#aide", function(){
-						$("#colorBTA1").hide();
-						$("#colorBTA2").css({"width": "97%",
-											"display": "block"});
-					})
-				})
-			});
-		})
-		
-		//Fonctions dans la colorbox
-
-		//Enregistrer
-		$(document).on("click", "#colorbox button:nth-child(4)", function(){
-			var colorBTA1 = $("#colorBTA1").val();
-			var colorBTA2 = $("#colorBTA2").val();
-			var titreColorBox = $("#colorbox h2").text();
-			var save = {infoCode : colorBTA1, texteCode: colorBTA2, titreCode: titreColorBox };
-			$.ajax({
-				type: "POST",
-				url: "ajax/action.php",
-				data: save,
-				success: function(data){
-					$("#cboxLoadedContent").append('<p class="valide">Les modifications ont bien été enregistré <i class="fa fa-check"></i></p>');
-					setTimeout(function(){$("#colorbox p").hide();}, 1300);			
-				}
-			});
+	//Afficher la colorbox pour chaque code
+	$(".gallery").on("click", function(){
+		var code 		= $(this).parent().find("textarea").val();
+		var titre 		= $(this).parent().find("span:first-child").text();
+		var id 			= $(this).parent().attr("data-id");
+		var info 		= $(this).parent().find("div").text();
+		var contenu 	= "<h2 data-code='"+id+"'>"+ titre +"</h2><div id='principal'>";
+		contenu 		= contenu + "<textarea id='colorBTA1'>"+ info +"</textarea>";
+		contenu 		= contenu + "<textarea id='colorBTA2'>"+ code +"</textarea></div>";
+		contenu 		= contenu + "<button class='button' id='aide' title='Afficher ou cacher les informations'><i class='fa fa-info'></i></button>";
+		contenu 		= contenu + "<button class='button save' title='Valider les modifications'><i class='fa fa-pencil-square-o'></i></button>";
+		contenu 		= contenu + "<button class='button sup' title='Supprimer ce code'><i class='fa fa-trash-o'></i></button>";
+		$(".gallery").colorbox({html:contenu,width:" 80%", height: "85%", opacity : 0.9, close : '<i class="fa fa-times"></i>'},function(){
+			$("#colorBTA1").hide();
 		});
+		$(document).on("click", "#aide" ,function(){
+			var myInfo = $("#colorBTA1").is(":visible");
+			if(myInfo){
+				$("#colorBTA1").hide();
+				$("#colorBTA2").css("width", "97%");
+			}else{
+				$("#colorBTA1").show().css("width", "30%");
+				$("#colorBTA2").css("width", "69%");
+			}
+		});	
+	});
+		
+	//Fonctions dans la colorbox
+	//Enregistrer
+	$(document).on("click", ".save", function(){
+		var info 		= $("#colorBTA1").val();
+		var code 		= $("#colorBTA2").val();
+		var id 			= $(this).parent().find("h2").attr("data-code");
+		var titre 		= $("#colorbox h2").text();
+		var myData 		= {infoCode : info, texteCode: code, titreCode: titre };
+		var li 			= $("#container").find("li");
+		console.log($(this).parent().parent());
+		$.ajax({
+			type: "POST",
+			url: "ajax/action.php",
+			data: myData,
+			success: function(data){
+				$("#cboxLoadedContent").append('<p class="valide">Les modifications ont bien été enregistré <i class="fa fa-check"></i></p>');
+				setTimeout(function(){$("#colorbox p").hide();}, 1300);		
+				$( "li" ).each(function() {
+					if($(this).attr("data-id") == id){
+						$(this).find("textarea").val(code);
+						$(this).find("div").text(info);
+					}
+				});
+			}
+		});
+	});
 
-		//Supprimer
-		$(document).on("click", "#colorbox button:nth-child(5)", function(){
-			var titreColorBox = $("#colorbox h2").text();
-			var supprimer = {deleteCode : '', titreCode: titreColorBox};
-			$("#cboxLoadedContent").append('<div id="formSupprimer"><span>Êtes-vous sûr de vouloir supprimer définitivement ce code ?</span><button class="button">Oui</button><button class="button">Non</button></div>');
-			$("#formSupprimer > button:nth-child(2)").click(function(){
+	//Supprimer
+	$(document).on("click", ".sup", function(){
+			var titreColorBox 	= $("#colorbox h2").text();
+			var supprimer 		= {deleteCode : '', titreCode: titreColorBox};
+			var id 	 			= $("#colorbox h2").attr("data-code");
+			var li 				= $("#container").find("li");
+			var contenu 		= '<div id="formSupprimer"><span>Êtes-vous sûr de vouloir supprimer définitivement ce code ?</span>';
+			contenu 			= contenu+'<button class="button accepteSup">Oui</button><button class="button refuseSup">Non</button></div>';
+			$("#cboxLoadedContent").append(contenu);
+			$(document).on("click", ".accepteSup", function(){
 				$.ajax({
 					type: "POST",
 					url: "ajax/action.php",
@@ -66,14 +84,19 @@ $(document).ready(function(){
 					success: function(data){
 						$("#formSupprimer, #colorbox").hide();
 						$("#container").append('<p class="valide">Le code a bien été supprimé <i class="fa fa-check"></i></p>');
-						setTimeout(function(){$("p.valide").hide();}, 1300);		
+						setTimeout(function(){$("p.valide").hide();}, 1300);	
+						$( "li" ).each(function() {
+							if($(this).attr("data-id") == id){
+								$(this).remove();
+							}
+						});	
 					}
 				});
 			});
-		});
-		$(document).on("click", "#formSupprimer > button:nth-child(3)", function(){
-			$("#formSupprimer").hide();
-		});
+	});
+	$(document).on("click", ".refuseSup", function(){
+		$("#formSupprimer").remove();
+	});
 
 
 		//Ajuster la taille du menu par rapport à la fenêtre

@@ -1,7 +1,7 @@
 <?php 
 	require("conf/config.php");
-	require("header.html");
 	require("script/traitement.php");
+	require("header.html");
 	extract($_GET);
 
 	if(isset($_SESSION[USER]['pseudo'])):
