@@ -1,0 +1,594 @@
+@font-face 
+{ 	
+	font-family: "aws"; 	
+	src: url('../font/FontAwesome.otf');
+}
+
+body, html
+{
+	margin: 0;
+	padding: 0;
+}
+
+body > *
+{
+	font-family: 'Open Sans',Sans-Serif;
+	color: rgb(122, 104, 104);
+}
+
+a
+{
+	text-decoration: none;
+	color: rgb(122, 104, 104);
+}
+
+label
+{
+	display: block;
+}
+
+ul
+{
+	list-style: none;
+	padding-left: 0px;
+}
+
+.valide
+{
+	background-color: rgba(146, 255, 156, 0.8);
+	border-radius: 12px;
+	border: 1px solid rgb(0, 255, 0);
+	padding: 10px 13px;
+	width: 240px;
+	margin: 20px auto;
+	color: rgb(75, 95, 73);
+}
+
+.valide > i
+{	
+	color: rgb(0, 255, 75);
+}
+
+.invalide
+{
+	background-color: rgba(225, 148, 148, 0.6);
+	border-radius: 3px;
+	border: 1px solid red;
+	padding: 10px 13px;
+	width: 240px;
+	margin: 20px auto;
+	font-size: 11px;
+	color: red;
+
+}
+
+
+/*         NAV         */
+nav
+{
+	width: 200px;
+	background-color: rgba(221, 221, 222, 0.47);
+	display: inline-block;
+}
+
+nav > ul
+{
+	margin: 0px;
+}
+
+nav > ul > li
+{
+	border-bottom: rgba(122, 104, 104, 0.22) 1px solid;
+	padding: 25px 3px;
+	font-weight: 100;
+	text-align: center;
+	position: relative;
+}
+
+nav > ul > li:hover , nav > button:hover
+{
+	color: rgb(1, 104, 104);
+	font-weight: 600;
+}
+
+.button
+{
+	display: block;
+	width: 80px;
+	margin: 5px auto;
+	font-family: verdana;
+	background-color: rgba(221, 221, 222, 0.47);
+	color: rgb(122, 104, 104);
+	border-radius: 3px;
+}
+
+#ajouter
+{
+	padding-top: 50px;
+}
+
+nav > div > button:first-child
+{
+	margin: 0px auto 25px auto;
+	width: 35px;
+	padding: 8px;
+	border-radius: 20px;
+}
+
+nav > button:last-child
+{
+	width: 100px;
+	margin-top: 20px;
+}
+
+nav > button > img
+{
+	width: 30px;
+	margin-top: 4px;
+}
+
+#ajouter > form
+{
+	border-bottom: rgba(122, 104, 104, 0.22) 1px solid;
+	padding-bottom: 10px;
+}
+
+#ajouter > form > input:first-child
+{
+	margin: 0 auto;
+	padding: 8px;
+	border-radius: 5px;
+	border: 1px solid #bdbdbd;
+	font-size: 14px;
+	width: 180px;
+}
+
+#ajouter > form > input:last-child
+{
+	padding: 8px;
+	color: rgb(122, 104, 104);
+	background-color: rgba(221, 221, 222, 0.47);
+	margin: 10px auto;
+	display: block;
+}
+
+
+
+
+/*            Partie centrale du site        */
+
+#infoUser
+{	
+	padding: 8px;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	background-color: rgba(221, 221, 222, 0.47);
+	display: inline;
+
+}
+
+#infoUser > span + form
+{
+	display: inline-block;
+	margin-left: 10px;
+}
+
+#infoUser > span:hover > a > i
+{
+	color: rgb(43, 141, 194);
+}
+
+#infoUser > form > input
+{
+	width: 100px;
+}
+
+
+
+#container
+{
+	display: inline-block;
+	vertical-align: top;
+	width: 52%;
+}
+
+#container > p
+{
+	position: absolute;
+	top: 37%;
+	left: 41%;
+}
+
+#container > ul > li
+{
+	display: inline-block;
+	margin: 10px 8px;
+	width: 30%;
+	vertical-align: top;
+	position: relative;
+	background-color: rgb(236, 229, 229);
+}
+
+#container > ul > li > span:first-child
+{
+	height: 29px;
+	overflow: hidden;
+	background-color: rgba(134, 118, 118, 0.17);
+}
+
+#container > ul > li > span > h2
+{
+	color: rgb(107, 107, 107);
+	text-align: center;
+	margin: 0px;
+}
+
+#container > ul > li > textarea
+{
+	margin: 10px 0px 10px 4px;
+	display: block;
+	height: 80px;
+	width: 80%;
+	max-width: 80%;
+	max-height: 80px;
+}
+
+#container > ul > li > img
+{
+	display: block;
+	width: 100%;
+}
+
+#container > ul > li > i
+{	
+	position: absolute;
+	right: 4px;
+	margin-top: 4px;
+	color: white;
+	padding: 4px;
+	border-radius: 20px;
+	background-color: rgb(107, 107, 107);
+}
+
+#container > ul > li > i:hover
+{
+	color: rgb(234, 227, 53);
+	background-color: rgba(107, 107, 107, 0.5);
+}
+
+#container > ul > li > span
+{
+	background-color: rgba(134, 118, 118, 0.17);
+	border-top:  rgba(122, 104, 104, 0.22) 1px solid;
+	text-align: center;
+	color: rgb(107, 107, 107);
+	display: block;
+}
+
+#container > ul > li > span > i
+{
+	margin: 0px 3px;
+	font-size: 8px;
+	padding: 6px 0px;
+}
+
+#container > ul > li > span:hover
+{
+	color: black;
+}
+
+#container > ul > li > div
+{
+	position: absolute;
+	left: 100%;
+	top: 29px;
+	z-index: 1;
+	font-size: 14px;
+	background-color: rgb(236, 229, 229);
+	border-radius: 0px 10px 10px 0px;
+	border-top: 1px solid rgb(207, 207, 207);
+	border-bottom: 1px solid rgb(207, 207, 207);
+	border-right: 1px solid rgb(207, 207, 207);
+	padding: 4px 20px 4px 10px;
+}
+
+#container > ul > li > div > p
+{
+	font-size: 14px;
+	width: 200px;
+}
+
+
+
+
+
+
+
+.formulaireAjout
+{
+	width: 30%;
+	margin-top: 60px;
+	display: inline-block;
+	vertical-align: top;
+	background-color: rgba(221, 221, 222, 0.47);
+	box-shadow: 2px 2px 8.9px #aaa;
+	border-radius: 5px;
+}
+
+.formulaireAjout > h2
+{
+	border-bottom: rgba(122, 104, 104, 0.22) 1px solid;
+	text-align: center;
+	font-weight: 100;
+	margin: 0;
+	padding: 8px;
+}
+
+.formulaireAjout > form
+{
+	display: inline-block;
+	vertical-align: top;
+	width: 100%;
+}
+
+.formulaireAjout > form > label
+{
+	margin-left: 5px;
+}
+
+.formulaireAjout > form > label > *
+{
+	width: 88%;
+	display: inline-block;
+}
+
+.formulaireAjout > form > label:nth-child(2) > textarea
+{
+	height: 230px;
+	margin-bottom: 18px;
+}
+
+.formulaireAjout > form > label > input , textarea
+{
+	display: inline-block;
+	border-radius: 4px;
+	border: 1px solid #bdbdbd;
+	font-size: 14px;
+}
+
+.formulaireAjout textarea
+{
+	max-width: 88%;
+	min-width: 88%;
+}
+
+.formulaireAjout > form > label:first-child > input
+{
+	height: 40px;
+	margin-bottom: 20px;
+}
+
+.formulaireAjout > form > input:last-child
+{
+	width: 120px;
+	padding: 8px;
+}
+
+.formulaireAjout > form > input:last-child:hover
+{
+	color: rgb(1, 104, 104);
+	font-weight: 600;
+}
+
+.mce-container, .mce-container-body 
+{
+  display: inline-block;
+}
+
+/*               Page de connexion et d'inscription             */
+
+
+#formLog 
+{
+	background-color: rgba(221, 221, 222, 0.47);
+	height: 75px;
+}
+
+#formLog > form
+{
+	position: absolute;
+	right: 70px;
+	top: 10px;
+}
+
+#formLog > form > label
+{
+	display: inline-block;
+	margin-right: 35px;
+}
+
+#formLog > form > label > span
+{
+	display: block;
+	font-size: 12px;
+}
+
+#formLog > form > input
+{
+	margin: 0;
+	display: inline-block;
+	width: 87px;
+}
+
+#logo
+{
+	margin: 0px 0px 0px 5%;
+	display: inline-block;
+	vertical-align: top;
+}
+
+#logo > img
+{
+	width: 170px;
+}
+
+#logo > h1
+{
+	display: inline-block;
+	margin-left: -89px;
+	color: rgb(1, 104, 104);
+	font-family: Lucida Calligraphy;
+}
+
+p
+{
+	color: rgb(1, 104, 104);
+	display: inline-block;
+	width: 400px;
+	font-size: 20px;
+	line-height: 30px;
+	margin-left: 5%;
+
+}
+
+#formIns
+{
+	display: inline-block;
+	margin-left: 12%;
+}
+
+#formIns > h2
+{
+	color: rgb(1, 104, 104);
+}
+
+#formIns > form
+{
+	
+}
+
+#formIns > form > input
+{
+	padding: 9px;
+	border-radius: 5px;
+	width: 240px;
+	display: block;
+	margin-bottom: 10px;
+}
+
+#formIns > form > input:last-child
+{
+	margin: 0;
+	background-color: rgb(1, 104, 104);
+	color: white;
+	width: 105px;
+}
+
+#colorbox
+{
+	background:white;
+	box-shadow: 4px 4px 20px #aaa; 
+}
+
+#colorBTA1, #colorBTA2
+{
+	display: inline-block;
+	vertical-align: top;
+	background-color: rgba(221, 221, 222, 0.47);
+	max-height: 440px;
+	height: 440px;
+}
+
+#colorBTA1
+{
+	width: 25%;
+	max-width: 25%;
+	margin: 0px 10px;
+}
+
+
+ #colorBTA2
+{
+	margin: 0px auto 0px auto;
+	width: 97%;
+	max-width: 97%;
+	display: block;
+}
+
+#colorbox h2
+{
+	text-align: center;
+}
+
+#colorbox p
+{	
+	position: absolute;
+	top: 39%;
+	left: 39%;
+}
+
+#colorbox button:nth-child(3), button:nth-child(4), button:nth-child(5)
+{
+	font-size: 28px;
+	display: inline-block;
+	margin: 10px 0px 0px 19px;
+}
+
+#colorbox button:nth-child(5):hover
+{
+	color: red;
+}
+
+#colorbox button:nth-child(4):hover
+{
+	color: rgb(56, 121, 178);
+}
+
+#colorbox button:nth-child(3):hover
+{
+	color: rgb(205, 222, 4);
+}
+
+#formSupprimer
+{
+	background-color: rgb(253, 255, 254);
+	width: 280px;
+	padding: 10px 13px;
+	position: absolute;
+	top: 39%;
+	left: 39%;
+	border-radius: 5px;
+	border: 1px solid rgb(194, 192, 209);
+	color: rgb(62, 38, 38);
+}
+
+#formSupprimer > button
+{
+	width: 130px;
+	font-size: 16px!important;
+	margin: 0px;
+	display: inline-block!important;
+}
+
+#formSupprimer > button:hover
+{
+	color: red!important;
+}
+
+
+#cboxClose
+{
+	position: absolute;
+	right: 3px;
+	top: 3px;
+	border: none;
+	background-color: white;
+	font-size: 18px;
+	color: black;
+}
+
+#cboxClose:hover
+{
+	color: red;
+}
